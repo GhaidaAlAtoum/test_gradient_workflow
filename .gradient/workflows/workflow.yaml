@@ -19,8 +19,8 @@ jobs:
     inputs:
       repo: CloneRepo.outputs.repo
     env:
-      ghaida: secret:KAGGLE_USERNAME
-      bash: secret:KAGGLE_USERNAME
+      # ghaida: secret:KAGGLE_USERNAME
+      # bash: secret:KAGGLE_USERNAME
       abood: temp
       # KAGGLE_KEY: secret:KAGGLE_KEY
     uses: script@v1
