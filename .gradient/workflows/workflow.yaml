@@ -1,9 +1,9 @@
 defaults:
   resources:
     instance-type: P5000
-  env:
-    KAGGLE_KEY: secret:kagglekey
-    KAGGLE_USERNAME: secret:kaggleusername
+  # env:
+  #   KAGGLE_KEY: secret:kagglekey
+  #   KAGGLE_USERNAME: secret:kaggleusername
 
 on:
   github:
@@ -23,16 +23,11 @@ jobs:
     inputs:
       repo: CloneRepo.outputs.repo
     uses: script@v1
-    env:
-      dance: "${{ secrets.KAGGLE_USERNAME }}" 
-    steps:
-      - env:
-          walk: "${{ secrets.KAGGLE_USERNAME }}" 
     with:
       script: |-
         cd /inputs/repo
-        python listenv.py
-        env
+        source ./setup
+        kaggle datasets download -d ghaidaalatoum/fairface -p /outputs/data/ --unzip 
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
 
