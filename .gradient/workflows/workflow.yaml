@@ -1,11 +1,14 @@
+defaults:
+  env:
+    HELLO: secret:temp
+  resources:
+    instance-type: P5000
 on:
   github:
     branches:
       only: main
 jobs:
   CloneRepo:
-    resources:
-      instance-type: P5000
     outputs:
       repo:
         type: volume
@@ -13,23 +16,14 @@ jobs:
     with:
       url: context.event.github.url
   HelloWorld:
-    resources:
-      instance-type: P5000
     needs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
     uses: script@v1
-    env:
-      # KAGGLE_USERNAME: secret:<KAGGLE_USERNAME>
-      # KAGGLE_KEY: secret:KAGGLE_KEY
-      # TEMP: secret:temp
-      HEHE: hehe
     with:
       script: |-
         cd /inputs/repo
-        echo "======"
-        env
-        echo "======"
+        python listenv.py
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
