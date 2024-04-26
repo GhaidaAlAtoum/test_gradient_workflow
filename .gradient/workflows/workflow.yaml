@@ -1,6 +1,7 @@
 defaults:
   env:
-    HELLO: secret:GITHUB_TOKEN
+    KAGGLE_USERNAME: secret:KAGGLE_USERNAME
+    KAGGLE_KEY: secret:KAGGLE_KEY
   resources:
     instance-type: P5000
 on:
