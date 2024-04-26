@@ -1,7 +1,4 @@
 defaults:
-  env:
-    KAGGLE_USERNAME: secret:KAGGLE_USERNAME
-    KAGGLE_KEY: secret:KAGGLE_KEY
   resources:
     instance-type: P5000
 on:
@@ -21,10 +18,14 @@ jobs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
+    env:
+      KAGGLE_USERNAME: secret:KAGGLE_USERNAME
+      # KAGGLE_KEY: secret:KAGGLE_KEY
     uses: script@v1
     with:
       script: |-
         cd /inputs/repo
         python listenv.py
+        env
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
