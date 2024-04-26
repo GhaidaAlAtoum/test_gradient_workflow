@@ -18,17 +18,12 @@ jobs:
     with:
       url: https://github.com/GhaidaAlAtoum/test_gradient_workflow.git
   GetFairFaceDataset:
-    needs:
-      - CloneRepo
-    inputs:
-      repo: CloneRepo.outputs.repo
     outputs:
       fair-face-volume:
         type: volume
     uses: script@v1
     with:
       script: |-
-        cd /inputs/repo
         echo "-------------------------------------- 1"
         pip install --upgrade pip setuptools wheel
         pip install kaggle
@@ -38,6 +33,7 @@ jobs:
         ls  /outputs/fair-face-volume/
         echo "-------------------------------------- 4"
       image: tensorflow/tensorflow:2.12.0-gpu
+
   Train:
     needs:
       - CloneRepo
