@@ -21,7 +21,7 @@ jobs:
     env:
       ghaida: secret:KAGGLE_USERNAME
       bash: secret:KAGGLE_USERNAME
-      abood: secret: temp
+      abood: temp
       # KAGGLE_KEY: secret:KAGGLE_KEY
     uses: script@v1
     with:
