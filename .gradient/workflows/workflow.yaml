@@ -23,6 +23,7 @@ jobs:
     with:
       script: |-
         cd /inputs/repo
+        pip list | grep tensorflow
         echo "-------------------------------------- 0"
         python hello.py
         echo "-------------------------------------- 1"
@@ -34,10 +35,12 @@ jobs:
         echo "-------------------------------------- 4"
         source ./createVirtualEnv.sh install myEnv
         echo "-------------------------------------- 5"
-        source ./createVirtualEnv.sh export myEnv
+        pip list | grep tensorflow
         echo "-------------------------------------- 6"
-        cat requirements_temp.txt
+        source ./createVirtualEnv.sh export myEnv
         echo "-------------------------------------- 7"
+        cat requirements_temp.txt
+        echo "-------------------------------------- 8"
         python hello.py
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b

@@ -1,12 +1,6 @@
 import platform
 import os
 import sys
-
-print("==============================================")
-print(os.system("pip list | grep tensor"))
-print("==============================================")
-
-
 import tensorflow as tf
 import tensorflow.keras
 
@@ -24,4 +18,5 @@ print(f"Python {sys.version}")
 # for gpu in gpus:
 #     print(gpu)
 
-print(tf.config.list_physical_devices('GPU'))
+# print(tf.config.list_physical_devices('GPU'))
+print("GPU is ", "available" if tf.config.list_physical_devices("GPU") else "NOT AVAILABLE")
