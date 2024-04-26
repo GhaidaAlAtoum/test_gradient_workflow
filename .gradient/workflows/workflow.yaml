@@ -1,7 +1,3 @@
-defaults:
-  env:
-    KAGGLE_USERNAME: secret:KAGGLE_USERNAME
-    KAGGLE_KEY: secret:KAGGLE_KEY
 on:
   github:
     branches:
@@ -24,15 +20,15 @@ jobs:
     inputs:
       repo: CloneRepo.outputs.repo
     uses: script@v1
+    env:
+      KAGGLE_USERNAME: secret:KAGGLE_USERNAME
+      KAGGLE_KEY: secret:KAGGLE_KEY
+      TEMP: secret:temp
+      HEHE: hehe
     with:
       script: |-
         cd /inputs/repo
-        echo "-------------------------------------- 0"
-        echo ENV $KAGGLE_USERNAME
-        echo ENV $KAGGLE_KEY 
-        echo "-------------------------------------- 1"
-        source setup.sh
-        echo "-------------------------------------- 2"
-        python hello.py
+        echo $HEHE
+        echo $TEMP
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
