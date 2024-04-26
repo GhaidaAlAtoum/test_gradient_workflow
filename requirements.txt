@@ -1,6 +1,5 @@
 tensorflow[and-cuda]==2.12.1
 keras==2.12.0
-tensorflow-gpu
 matplotlib
 numpy
 pandas
