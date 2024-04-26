@@ -22,6 +22,11 @@ jobs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
+    outputs:
+      my-dataset:
+        type: dataset
+        with:
+          ref: dsiyub4jejwfw7b
     uses: script@v1
     with:
       script: |-
@@ -29,7 +34,7 @@ jobs:
         echo "-------------------------------------- 1"
         source setup.sh
         echo "-------------------------------------- 2"
-        kaggle datasets download -d ghaidaalatoum/fairface -p /outputs/data/ --unzip 
+        kaggle datasets download -d ghaidaalatoum/fairface -p /outputs/my-dataset/ --unzip 
         echo "-------------------------------------- 3"
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
