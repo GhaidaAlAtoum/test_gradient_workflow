@@ -24,16 +24,8 @@ jobs:
       script: |-
         cd /inputs/repo
         echo "-------------------------------------- 0"
-        pip list | grep tensorflow
+        source setup.sh
         echo "-------------------------------------- 1"
-        pip install --upgrade pip setuptools wheel
-        echo "-------------------------------------- 2"
-        pip list | grep tensorflow
-        echo "-------------------------------------- 3"
-        pip install -r ./requirements.txt
-        echo "-------------------------------------- 4"
-        cat requirements_temp.txt
-        echo "-------------------------------------- 5"
         python hello.py
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
