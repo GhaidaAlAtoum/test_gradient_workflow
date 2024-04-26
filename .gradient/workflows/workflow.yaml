@@ -43,6 +43,7 @@ jobs:
       - CloneRepo
       - GetFairFaceDataset
     inputs:
+      repo: CloneRepo.outputs.repo
       fair-face-volume: GetFairFaceDataset.outputs.fair-face-volume
     uses: script@v1
     with:
@@ -51,6 +52,6 @@ jobs:
         ls /inputs
         echo "-------------------------------------- 1"
         ls /outputs
-    image: tensorflow/tensorflow:2.12.0-gpu
+      image: tensorflow/tensorflow:2.12.0-gpu
 
 # https://docs.digitalocean.com/products/paperspace/workflows/concepts/environment-variables/
