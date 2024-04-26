@@ -1,6 +1,5 @@
 tensorflow==2.12.1
 keras==2.12.0
-tensorflow-gpu==2.12
 matplotlib
 numpy
 pandas
