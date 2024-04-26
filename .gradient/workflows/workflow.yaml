@@ -1,6 +1,6 @@
 defaults:
   env:
-    HELLO: secret:temp
+    HELLO: secret:GITHUB_TOKEN
   resources:
     instance-type: P5000
 on:
