@@ -23,6 +23,8 @@ jobs:
     with:
       script: |-
         cd /inputs/repo
+        echo "-------------------------------------- 0"
+        python hello.py
         echo "-------------------------------------- 1"
         pip install --upgrade pip setuptools wheel
         echo "-------------------------------------- 2"
