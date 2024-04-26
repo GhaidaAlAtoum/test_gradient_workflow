@@ -2,8 +2,8 @@ defaults:
   resources:
     instance-type: P5000
   env:
-    KAGGLE_KEY: secret:kagglekey
-    KAGGLE_USERNAME: secret:kaggleusername
+    KAGGLE_KEY:  ${{ secrets.KAGGLE_KEY }}
+    KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
 
 on:
   github:
