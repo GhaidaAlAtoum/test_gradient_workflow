@@ -16,6 +16,9 @@ print(f"Python {sys.version}")
 print("==============================================")
 print(os.system("pip list | grep tensor"))
 print("==============================================")
-gpus = tf.config.list_physical_devices('GPU')
-for gpu in gpus:
-    print(gpu)
+
+# gpus = tf.config.list_physical_devices('GPU')
+# for gpu in gpus:
+#     print(gpu)
+
+print(tf.config.list_physical_devices('GPU'))

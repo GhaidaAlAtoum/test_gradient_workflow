@@ -23,5 +23,9 @@ jobs:
     with:
       script: |-
         cd /inputs/repo
+        source ./createVirtualEnv.sh create myEnv
+        source ./createVirtualEnv.sh activate myEnv
+        source ./createVirtualEnv.sh install myEnv
         python hello.py
-      image: gja8672/test-gradient:sha-d8a940b
+      image: tensorflow/tensorflow:2.12.0-gpu
+# gja8672/test-gradient:sha-d8a940b

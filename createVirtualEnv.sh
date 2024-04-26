@@ -53,9 +53,12 @@ install_deps() {
         echo "Virtual environment '$env_name' not found. Use '$0 create [env_name]' to create one."
         return 1
     fi
+    
 
     source "./$env_name/bin/activate"
 
+    pip install --upgrade pip setuptools wheel
+    
     if [ -f "requirements.txt" ]; then
         pip install -r ./requirements.txt
     fi
@@ -63,8 +66,6 @@ install_deps() {
     if [ -f "setup.py" ]; then
         pip install -e .
     fi
-    python3 -m ipykernel install --user --name=$env_name
-
 }
 
 export_deps() {
