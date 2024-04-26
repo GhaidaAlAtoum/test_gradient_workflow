@@ -57,8 +57,6 @@ install_deps() {
 
     source "./$env_name/bin/activate"
 
-    pip install --upgrade pip setuptools wheel
-    
     if [ -f "requirements.txt" ]; then
         pip install -r ./requirements.txt
     fi
@@ -77,8 +75,8 @@ export_deps() {
     fi
 
     source "./$env_name/bin/activate"
-    pip freeze > requirements.txt
-    echo "Dependencies exported to requirements.txt"
+    pip freeze > requirements_temp.txt
+    echo "Dependencies exported to requirements_temp.txt"
 }
 
 remove_venv() {

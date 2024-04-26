@@ -1,6 +1,12 @@
 import platform
 import os
 import sys
+
+print("==============================================")
+print(os.system("pip list | grep tensor"))
+print("==============================================")
+
+
 import tensorflow as tf
 import tensorflow.keras
 
@@ -13,9 +19,6 @@ print(f"Tensor Flow Version: {tf.__version__}")
 print(f"Keras Version: {tensorflow.keras.__version__}")
 print()
 print(f"Python {sys.version}")
-print("==============================================")
-print(os.system("pip list | grep tensor"))
-print("==============================================")
 
 # gpus = tf.config.list_physical_devices('GPU')
 # for gpu in gpus:
