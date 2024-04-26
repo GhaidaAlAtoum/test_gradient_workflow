@@ -27,7 +27,7 @@ jobs:
       script: |-
         cd /inputs/repo
         echo "-------------------------------------- 0"
-        printenv | grep -i kaggle
+        printenv
         echo "-------------------------------------- 1"
         source setup.sh
         echo "-------------------------------------- 2"
