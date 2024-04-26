@@ -26,8 +26,11 @@ jobs:
     with:
       script: |-
         cd /inputs/repo
-        source ./setup
+        echo "-------------------------------------- 1"
+        source setup.sh
+        echo "-------------------------------------- 2"
         kaggle datasets download -d ghaidaalatoum/fairface -p /outputs/data/ --unzip 
+        echo "-------------------------------------- 3"
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
 
