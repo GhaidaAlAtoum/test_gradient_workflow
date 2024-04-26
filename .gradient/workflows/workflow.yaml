@@ -1,4 +1,8 @@
-'on':
+defaults:
+  env:
+    KAGGLE_USERNAME: secret:KAGGLE_USERNAME
+    KAGGLE_KEY: secret:KAGGLE_KEY
+on:
   github:
     branches:
       only: main
@@ -13,9 +17,6 @@ jobs:
     with:
       url: context.event.github.url
   HelloWorld:
-    env:
-      KAGGLE_USERNAME: secret:KAGGLE_USERNAME
-      KAGGLE_KEY: secret:KAGGLE_KEY
     resources:
       instance-type: P5000
     needs:
