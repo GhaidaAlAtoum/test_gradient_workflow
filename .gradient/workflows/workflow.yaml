@@ -28,4 +28,4 @@ jobs:
         pip install scikit-learn
         cd /inputs/repo
         python hello.py
-      image: tensorflow/tensorflow:2.12.0-gpu
+      image: tensorflow/tensorflow:2.12.0rc1-gpu
