@@ -22,9 +22,10 @@ jobs:
     uses: script@v1
     with:
       script: |-
+        python3 -m pip install --upgrade pip setuptools wheel
         pip install matplotlib
         pip install numpy
         pip install sklearn
         cd /inputs/repo
         python hello.py
-      image: tensorflow/tensorflow:1.14.0-py3
+      image: tensorflow/tensorflow:2.12.0-gpu
