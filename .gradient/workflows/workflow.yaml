@@ -21,5 +21,10 @@ jobs:
       repo: CloneRepo.outputs.repo
     uses: script@v1
     with:
-      script: python /inputs/repo/hello.py
+      script: |-
+        pip install matplotlib
+        pip install numpy
+        pip install sklearn
+        cd /inputs/repo
+        python hello.py
       image: tensorflow/tensorflow:1.14.0-py3
