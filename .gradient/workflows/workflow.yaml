@@ -24,4 +24,4 @@ jobs:
       script: |-
         cd /inputs/repo
         python hello.py
-      image: test-gradient:sha-d8a940b
+      image: gja8672/test-gradient:sha-d8a940b
