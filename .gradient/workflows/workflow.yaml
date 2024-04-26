@@ -28,7 +28,8 @@ jobs:
       script: |-
         cd /inputs/repo
         echo "-------------------------------------- 0"
-        printenv
+        echo ENV $KAGGLE_USERNAME
+        echo ENV $KAGGLE_KEY 
         echo "-------------------------------------- 1"
         source setup.sh
         echo "-------------------------------------- 2"
