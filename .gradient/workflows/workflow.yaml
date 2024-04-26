@@ -5,10 +5,10 @@ defaults:
     KAGGLE_KEY: secret:kagglekey
     KAGGLE_USERNAME: secret:kaggleusername
 
-# on:
-#   github:
-#     branches:
-#       only: main
+on:
+  github:
+    branches:
+      only: main
 jobs:
   CloneRepo:
     outputs:
@@ -25,6 +25,9 @@ jobs:
     uses: script@v1
     env:
       dance: "${{ secrets.KAGGLE_USERNAME }}" 
+    steps:
+      - env:
+          walk: "${{ secrets.KAGGLE_USERNAME }}" 
     with:
       script: |-
         cd /inputs/repo
