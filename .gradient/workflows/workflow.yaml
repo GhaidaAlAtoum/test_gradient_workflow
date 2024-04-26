@@ -1,6 +1,10 @@
 defaults:
   resources:
     instance-type: P5000
+  env:
+    KAGGLE_KEY: secret:kagglekey
+    KAGGLE_USERNAME: secret:kaggleusername
+
 on:
   github:
     branches:
@@ -12,17 +16,12 @@ jobs:
         type: volume
     uses: git-checkout@v1
     with:
-      url: context.event.github.url
+      url: https://github.com/GhaidaAlAtoum/test_gradient_workflow.git
   HelloWorld:
     needs:
       - CloneRepo
     inputs:
       repo: CloneRepo.outputs.repo
-    env:
-      # ghaida: secret:KAGGLE_USERNAME
-      # bash: secret:KAGGLE_USERNAME
-      abood: temp
-      # KAGGLE_KEY: secret:KAGGLE_KEY
     uses: script@v1
     with:
       script: |-
@@ -30,4 +29,5 @@ jobs:
         python listenv.py
         env
       image: tensorflow/tensorflow:2.12.0-gpu
-# gja8672/test-gradient:sha-d8a940b
+
+# https://docs.digitalocean.com/products/paperspace/workflows/concepts/environment-variables/
