@@ -28,7 +28,10 @@ jobs:
     with:
       script: |-
         cd /inputs/repo
+        echo "======"
         echo $HEHE
         echo $TEMP
+        echo $KAGGLE_USERNAME
+        echo "======"
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
