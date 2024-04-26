@@ -30,7 +30,7 @@ create_venv() {
         return 1
     fi
 
-    virtualenv "$env_name" --python=python3.8
+    python3 -m venv "$env_name"
     source "./$env_name/bin/activate"
     pip install -U pip
 }
