@@ -23,24 +23,17 @@ jobs:
     with:
       script: |-
         cd /inputs/repo
-        pip list | grep tensorflow
         echo "-------------------------------------- 0"
-        python hello.py
+        pip list | grep tensorflow
         echo "-------------------------------------- 1"
         pip install --upgrade pip setuptools wheel
         echo "-------------------------------------- 2"
-        source ./createVirtualEnv.sh create myEnv
-        echo "-------------------------------------- 3"
-        source ./createVirtualEnv.sh activate myEnv
-        echo "-------------------------------------- 4"
-        source ./createVirtualEnv.sh install myEnv
-        echo "-------------------------------------- 5"
         pip list | grep tensorflow
-        echo "-------------------------------------- 6"
-        source ./createVirtualEnv.sh export myEnv
-        echo "-------------------------------------- 7"
+        echo "-------------------------------------- 3"
+        pip install -r ./requirements.txt
+        echo "-------------------------------------- 4"
         cat requirements_temp.txt
-        echo "-------------------------------------- 8"
+        echo "-------------------------------------- 5"
         python hello.py
       image: tensorflow/tensorflow:2.12.0-gpu
 # gja8672/test-gradient:sha-d8a940b
