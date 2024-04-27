@@ -8,6 +8,8 @@ on:
       only: main
 jobs:
   CloneRepo:
+    resources:
+      instance-type: C5
     outputs:
       repo:
         type: volume
@@ -15,6 +17,8 @@ jobs:
     with:
       url: context.event.github.url
   GetFairFaceDataset:
+    resources:
+      instance-type: C5
     outputs:
       fair-face-volume:
         type: volume

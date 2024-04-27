@@ -122,16 +122,16 @@ class EpochModelCheckpoint(tf.keras.callbacks.ModelCheckpoint):
         pass
 
 def create_dirs(model_name: str):
-    checkpoint_dir = "./outputs/{}/checkpoints/".format(model_name)
+    checkpoint_dir = "./outputs/training-output-dataset/{}/checkpoints/".format(model_name)
     Path(checkpoint_dir).mkdir(parents=True, exist_ok=True)
     
-    logging_dir = "./outputs/{}/logging/".format(model_name)
+    logging_dir = "./outputs/training-output-dataset/{}/logging/".format(model_name)
     Path(logging_dir).mkdir(parents=True, exist_ok=True)
     
-    model_dir = "./outputs/{}/model/".format(model_name)
+    model_dir = "./outputs/training-output-dataset/{}/model/".format(model_name)
     Path(model_dir).mkdir(parents=True, exist_ok=True)
     
-    weight_dir = "./outputs/{}/weights/".format(model_name)
+    weight_dir = "./outputs/training-output-dataset/{}/weights/".format(model_name)
     Path(weight_dir).mkdir(parents=True, exist_ok=True)
     
     return checkpoint_dir, logging_dir, model_dir, weight_dir
