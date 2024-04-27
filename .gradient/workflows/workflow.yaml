@@ -1,6 +1,6 @@
 defaults:
   resources:
-    instance-type: P6000
+    instance-type: A5000
 
 on:
   github:
@@ -31,7 +31,7 @@ jobs:
         echo "-------------------------------------- 4"
       image: tensorflow/tensorflow:2.12.0-gpu
 
-  Train_8layers_3kernelSize:
+  TrainEightLayersThreeKernelSize:
     needs:
       - CloneRepo
       - GetFairFaceDataset
@@ -59,4 +59,33 @@ jobs:
         type: dataset
         with:
           ref: "dsqbuhm53vosqqs"
+
+  # TrainEightLayersFiveKernelSize:
+  #   needs:
+  #     - CloneRepo
+  #     - GetFairFaceDataset
+  #   inputs:
+  #     repo: CloneRepo.outputs.repo
+  #     fair-face-volume: GetFairFaceDataset.outputs.fair-face-volume
+  #   uses: script@v1
+  #   with:
+  #     script: |-
+  #       echo "-------------------------------------- 0 - List Training Data"
+  #       ls /inputs/fair-face-volume/fairface/
+  #       echo "-------------------------------------- 2 - Access Repo" 
+  #       cd /inputs/repo
+  #       echo "-------------------------------------- 1 - Setup ENV"
+  #       source setup.sh
+  #       echo "-------------------------------------- 3 - Run Training"
+  #       python ./train.py -e 4 -b 64 -s 3 -c 1 --overwrite_sample_number true --number_samples 100 -m ./layers_8_kernel_5_no_flat.yaml -f /inputs/fair-face-volume/fairface
+  #       echo "-------------------------------------- 4 - List outputs"
+  #       cp -R ./outputs/training-output-dataset /outputs
+  #       ls /outputs
+  #       ls -R /outputs/training-output-dataset
+  #     image: tensorflow/tensorflow:2.12.0-gpu
+  #   outputs:
+  #     training-output-dataset:
+  #       type: dataset
+  #       with:
+  #         ref: "dsqbuhm53vosqqs"
 # https://docs.digitalocean.com/products/paperspace/workflows/concepts/environment-variables/
