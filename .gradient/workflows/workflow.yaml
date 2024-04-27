@@ -48,7 +48,7 @@ jobs:
         echo "-------------------------------------- 1 - Setup ENV"
         source setup.sh
         echo "-------------------------------------- 3 - Run Training"
-        python ./train.py -m "./layers_8_kernel_3_no_flat.yaml" -f "/inputs/fair-face-volume/fairface" -e 4 -b 64 -s 3 -c 1 --overwrite_sample_number true --number_samples 100 
+        python ./train.py -e 4 -b 64 -s 3 -c 1 --overwrite_sample_number true --number_samples 100 -m ./layers_8_kernel_3_no_flat.yaml -f /inputs/fair-face-volume/fairface
         echo "-------------------------------------- 4 - List outputs"
         cp -R ./outputs/training-output-dataset /outputs
         ls /outputs
