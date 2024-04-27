@@ -33,7 +33,7 @@ jobs:
         echo "-------------------------------------- 4"
       image: tensorflow/tensorflow:2.12.0-gpu
   
-  Train:
+  TrainEightLayersThreeKernelSize:
     needs:
       - CloneRepo
       - GetFairFaceDataset
@@ -51,7 +51,7 @@ jobs:
         echo "-------------------------------------- 1 - Setup ENV"
         source setup.sh
         echo "-------------------------------------- 3 - Run Training"
-        source run_train_8_3.sh
+        ./run_train_8_3.sh
         echo "-------------------------------------- 4 - List outputs"
         cp -R ./outputs/training-output-dataset /outputs
         ls /outputs
@@ -64,3 +64,4 @@ jobs:
           ref: "dsqbuhm53vosqqs"
     resources:
       instance-type: A5000
+
