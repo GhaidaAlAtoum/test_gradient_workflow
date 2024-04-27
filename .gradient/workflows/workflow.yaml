@@ -59,7 +59,9 @@ jobs:
         echo "-------------------------------------- 3 - Run Training"
         python train.py
         echo "-------------------------------------- 4 - List outputs"
-        ls /outputs
+        cd /outputs
+        du -sh *
+        ls 
       image: tensorflow/tensorflow:2.12.0-gpu
 
 # https://docs.digitalocean.com/products/paperspace/workflows/concepts/environment-variables/
