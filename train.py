@@ -103,3 +103,6 @@ history.append(
 train_loss, train_acc = model.evaluate(train_generator)
 validation_loss, test_acc = model.evaluate(validation_generator)
 print('Train: %.3f, Test: %.3f' % (train_acc, test_acc))
+
+model.save("./outputs/training-output-dataset/model/model_name.h5")
+model.save_weights("./outputs/training-output-dataset/weights/model_weights")
