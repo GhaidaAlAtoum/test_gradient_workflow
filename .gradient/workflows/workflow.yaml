@@ -1,14 +1,11 @@
 defaults:
   resources:
-    instance-type: P5000
-  # env:
-  #   KAGGLE_KEY: secret:kagglekey
-  #   KAGGLE_USERNAME: secret:kaggleusername
+    instance-type: P6000
 
-# on:
-#   github:
-#     branches:
-#       only: main
+on:
+  github:
+    branches:
+      only: main
 jobs:
   CloneRepo:
     outputs:
@@ -34,7 +31,7 @@ jobs:
         echo "-------------------------------------- 4"
       image: tensorflow/tensorflow:2.12.0-gpu
 
-  Train:
+  Train_8layers_3kernelSize:
     needs:
       - CloneRepo
       - GetFairFaceDataset
@@ -48,11 +45,10 @@ jobs:
         ls /inputs/fair-face-volume/fairface/
         echo "-------------------------------------- 2 - Access Repo" 
         cd /inputs/repo
-        ls
         echo "-------------------------------------- 1 - Setup ENV"
         source setup.sh
         echo "-------------------------------------- 3 - Run Training"
-        python train.py
+        python ./train.py -m "./layers_8_kernel_3_no_flat.yaml" -f "/inputs/fair-face-volume/fairface" -e 4 -b 64 -s 3 -c 1 --overwrite_sample_number true --number_samples 100 
         echo "-------------------------------------- 4 - List outputs"
         cp -R ./outputs/training-output-dataset /outputs
         ls /outputs
