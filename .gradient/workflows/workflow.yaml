@@ -13,7 +13,7 @@ jobs:
         type: volume
     uses: git-checkout@v1
     with:
-      url: https://github.com/GhaidaAlAtoum/test_gradient_workflow.git
+      url: context.event.github.url
   GetFairFaceDataset:
     outputs:
       fair-face-volume:
