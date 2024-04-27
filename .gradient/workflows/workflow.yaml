@@ -5,10 +5,10 @@ defaults:
   #   KAGGLE_KEY: secret:kagglekey
   #   KAGGLE_USERNAME: secret:kaggleusername
 
-on:
-  github:
-    branches:
-      only: main
+# on:
+#   github:
+#     branches:
+#       only: main
 jobs:
   CloneRepo:
     outputs:
@@ -17,30 +17,30 @@ jobs:
     uses: git-checkout@v1
     with:
       url: https://github.com/GhaidaAlAtoum/test_gradient_workflow.git
-  GetFairFaceDataset:
-    outputs:
-      fair-face-volume:
-        type: volume
-    uses: script@v1
-    with:
-      script: |-
-        echo "-------------------------------------- 1"
-        pip install --upgrade pip setuptools wheel
-        pip install kaggle
-        echo "-------------------------------------- 2"
-        kaggle datasets download -d ghaidaalatoum/fairface -p /outputs/fair-face-volume/ --unzip 
-        echo "-------------------------------------- 3"
-        ls  /outputs/fair-face-volume/
-        echo "-------------------------------------- 4"
-      image: tensorflow/tensorflow:2.12.0-gpu
+  # GetFairFaceDataset:
+  #   outputs:
+  #     fair-face-volume:
+  #       type: volume
+  #   uses: script@v1
+  #   with:
+  #     script: |-
+  #       echo "-------------------------------------- 1"
+  #       pip install --upgrade pip setuptools wheel
+  #       pip install kaggle
+  #       echo "-------------------------------------- 2"
+  #       kaggle datasets download -d ghaidaalatoum/fairface -p /outputs/fair-face-volume/ --unzip 
+  #       echo "-------------------------------------- 3"
+  #       ls  /outputs/fair-face-volume/
+  #       echo "-------------------------------------- 4"
+  #     image: tensorflow/tensorflow:2.12.0-gpu
 
   Train:
     needs:
       - CloneRepo
-      - GetFairFaceDataset
+      # - GetFairFaceDataset
     inputs:
       repo: CloneRepo.outputs.repo
-      fair-face-volume: GetFairFaceDataset.outputs.fair-face-volume
+      # fair-face-volume: GetFairFaceDataset.outputs.fair-face-volume
     uses: script@v1
     with:
       script: |-
@@ -49,13 +49,11 @@ jobs:
         echo "-------------------------------------- 2 - Access Repo" 
         cd /inputs/repo
         ls
-        echo "-------------------------------------- 3 - Run Training"
-        mkdir outputs
-        mkdir outputs/training-output-dataset
-        cp hello.py ./outputs/
         echo "-------------------------------------- 4 - List outputs"
-        cp -R ./outputs/training-output-dataset /outputs
+        cp -R temp_output /outputs
+        cp ./temp_output/* /outputs
         ls /outputs
+        ls /outputs/temp_output
       image: tensorflow/tensorflow:2.12.0-gpu
     outputs:
       training-output-dataset:
