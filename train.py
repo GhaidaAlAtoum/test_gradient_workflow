@@ -14,8 +14,8 @@ parser.add_argument('-e', '--num_epochs', default=32, type=int, required=True)
 parser.add_argument('-b', '--batch_size', default=32, type=int, required=True)
 parser.add_argument('-s', '--early_stopping_patience', default=10, type=int, required=True)
 parser.add_argument('-c', '--checkpoint_frequencey', default=1, type=int, required=True)
-parser.add_argument('--overwrite_sample_number', default=False, type=bool)
-parser.add_argument('--number_samples', required='--overwrite_sample_number' in sys.argv ,default=100, type=int)
+# parser.add_argument('--overwrite_sample_number', default=False, type=bool)
+# parser.add_argument('--number_samples', required='--overwrite_sample_number' in sys.argv ,default=100, type=int)
 
 
 global args
@@ -196,8 +196,7 @@ fair_face_dataset = FairFaceDataset(
     under_sample = True,
     image_shape = (224,224,3),
     feature_column = "file",
-    output_col = "binary_race",
-    overwrite_sample_number = args.number_samples
+    output_col = "binary_race"
 )
 
 train_df = fair_face_dataset.get_train_pd()
