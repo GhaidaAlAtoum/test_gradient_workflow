@@ -58,8 +58,8 @@ jobs:
         ls /outputs
       image: tensorflow/tensorflow:2.12.0-gpu
     outputs:
-    training-output-dataset:
-      type: dataset
-      with:
-        ref: training-output-dataset
+      training-output-dataset:
+        type: dataset
+        with:
+          ref: training-output-dataset
 # https://docs.digitalocean.com/products/paperspace/workflows/concepts/environment-variables/
