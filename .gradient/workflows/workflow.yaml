@@ -59,6 +59,7 @@ jobs:
         echo "-------------------------------------- 3 - Run Training"
         python train.py
         echo "-------------------------------------- 4 - List outputs"
+        cp -R ./outputs/training-output-dataset /outputs
         cd /outputs
         du -sh *
         ls 

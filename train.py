@@ -71,12 +71,12 @@ validation_generator = train_datagen.flow_from_dataframe(
 
 history = []
 
-Path("/outputs/training-output-dataset/checkpoints").mkdir(parents=True, exist_ok=True)
-Path("/outputs/training-output-dataset/logging").mkdir(parents=True, exist_ok=True)
-Path("/outputs/training-output-dataset/model").mkdir(parents=True, exist_ok=True)
-Path("/outputs/training-output-dataset/weights").mkdir(parents=True, exist_ok=True)
+Path("./outputs/training-output-dataset/checkpoints").mkdir(parents=True, exist_ok=True)
+Path("./outputs/training-output-dataset/logging").mkdir(parents=True, exist_ok=True)
+Path("./outputs/training-output-dataset/model").mkdir(parents=True, exist_ok=True)
+Path("./outputs/training-output-dataset/weights").mkdir(parents=True, exist_ok=True)
 
-filepath="/outputs/training-output-dataset/checkpoints/cp-{epoch:02d}.ckpt"
+filepath="./outputs/training-output-dataset/checkpoints/cp-{epoch:02d}.ckpt"
 checkpoint = tf.keras.callbacks.ModelCheckpoint(
     filepath=filepath,
     monitor = 'val_accuracy',
@@ -84,7 +84,7 @@ checkpoint = tf.keras.callbacks.ModelCheckpoint(
 )
 
 log_csv = CSVLogger(
-    filename = "/outputs/training-output-dataset/logging/logs.csv",
+    filename = "./outputs/training-output-dataset/logging/logs.csv",
     append = True
 )
 
@@ -94,7 +94,7 @@ callbacks_list = [checkpoint, log_csv]
 history.append(
     model.fit(
         train_generator,
-        epochs = 2,
+        epochs = 1,
         validation_data = validation_generator,
         callbacks=callbacks_list
     )
