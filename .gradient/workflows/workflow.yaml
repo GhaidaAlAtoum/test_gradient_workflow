@@ -45,7 +45,7 @@ jobs:
       training-output-dataset:
         type: dataset
         with:
-          ref: ds15a8t3834q515
+          ref: dsaq2kdlhe6gsj3
     uses: script@v1
     with:
       script: |-
