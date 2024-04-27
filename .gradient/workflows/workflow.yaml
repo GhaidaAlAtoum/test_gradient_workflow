@@ -50,10 +50,11 @@ jobs:
       script: |-
         echo "-------------------------------------- 0 - List Training Data"
         ls /inputs/fair-face-volume/fairface/
+        echo "-------------------------------------- 2 - Access Repo" 
+        cd /inputs/repo
+        ls
         echo "-------------------------------------- 1 - Setup ENV"
         source setup.sh
-        echo "-------------------------------------- 2 - List Repo" 
-        cd /inputs/repo
         echo "-------------------------------------- 3 - Run Training"
         python train.py
         echo "-------------------------------------- 4 - List outputs"
