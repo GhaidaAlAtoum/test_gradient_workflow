@@ -45,7 +45,7 @@ jobs:
     with:
       script: |-
         echo "-------------------------------------- 0"
-        ls /inputs
+        ls /inputs/fair-face-volume/
         echo "-------------------------------------- 1"
         ls /outputs
       image: tensorflow/tensorflow:2.12.0-gpu
